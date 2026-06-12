@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+/* ============================================
+   TaskFlow Design System - Tailwind CSS v4
+   Based on Material Design 3 color tokens
+   from HTML design references
+   ============================================ */
+
+@theme {
+  /* -- Color Tokens -- */
+  --color-primary: #4648d4;
+  --color-primary-container: #e1e0ff;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #07006c;
+  --color-on-primary-fixed: #07006c;
+  --color-on-primary-fixed-variant: #2f2ebe;
+  --color-primary-fixed: #e1e0ff;
+  --color-primary-fixed-dim: #c0c1ff;
+  --color-inverse-primary: #c0c1ff;
+
+  --color-secondary: #5a5f62;
+  --color-secondary-container: #dfe3e7;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #5e6367;
+  --color-on-secondary-fixed: #171c1f;
+  --color-on-secondary-fixed-variant: #43474b;
+  --color-secondary-fixed: #dfe3e7;
+  --color-secondary-fixed-dim: #c3c7cb;
+
+  --color-tertiary: #006c49;
+  --color-tertiary-container: #6ffbbe;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #002113;
+  --color-on-tertiary-fixed: #002113;
+  --color-on-tertiary-fixed-variant: #005236;
+  --color-tertiary-fixed: #6ffbbe;
+  --color-tertiary-fixed-dim: #4edea3;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  --color-background: #faf8ff;
+  --color-on-background: #131b2e;
+  --color-surface: #faf8ff;
+  --color-on-surface: #131b2e;
+  --color-on-surface-variant: #464554;
+  --color-surface-variant: #e4e1ec;
+
+  --color-surface-dim: #ddd9e6;
+  --color-surface-bright: #faf8ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f7f4ff;
+  --color-surface-container: #f0eef9;
+  --color-surface-container-high: #eae7f3;
+  --color-surface-container-highest: #e4e1ec;
+  --color-surface-tint: #494bd6;
+
+  --color-outline: #767586;
+  --color-outline-variant: #c7c4d7;
+
+  --color-inverse-surface: #283044;
+  --color-inverse-on-surface: #eef0ff;
+
+  /* -- Font Family -- */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* -- Font Sizes -- */
+  --text-caption: 0.75rem;
+  --text-label-sm: 0.875rem;
+  --text-body-sm: 0.875rem;
+  --text-body-base: 1rem;
+  --text-headline-lg: 1.25rem;
+  --text-headline-xl: 1.5rem;
+  --text-headline-2xl: 1.875rem;
+
+  /* -- Spacing -- */
+  --app-space-xs: 4px;
+  --app-space-sm: 8px;
+  --app-space-md: 16px;
+  --app-space-lg: 24px;
+  --app-space-xl: 32px;
+
+  /* -- Border Radius -- */
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  /* -- Animations -- */
+  --animate-slide-up: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fade-in 0.3s ease forwards;
+  --animate-toast-slide-in: toast-slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-shake: shake 0.4s ease-in-out;
+  --animate-spin-slow: spin 3s linear infinite;
+  --animate-fade-in-up: fade-in-up 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes toast-slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+@keyframes fade-in-up {
+  from { transform: translateY(16px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ============================================
+   Custom Utilities
+   ============================================ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.form-glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 20px 70px rgba(19, 27, 46, 0.12);
+}
+
+.backdrop-blur-custom {
+  backdrop-filter: blur(8px);
+  background-color: rgba(19, 27, 46, 0.4);
+}
+
+.auth-shell {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(225, 224, 255, 0.78), transparent 30%),
+    radial-gradient(circle at 86% 18%, rgba(111, 251, 190, 0.24), transparent 28%),
+    linear-gradient(135deg, #faf8ff 0%, #f4f1ff 54%, #faf8ff 100%);
+}
+
+.glass-header {
+  background: rgba(250, 248, 255, 0.86);
+  backdrop-filter: blur(12px);
+}
+
+.task-row-transition {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.task-row-transition:hover {
+  transform: translateX(4px);
+}
+
+.checkbox-pop:active {
+  transform: scale(0.85);
+}
+
+/* Material Symbols helper */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-outline-variant);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-outline);
+}
