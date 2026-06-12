@@ -3,7 +3,7 @@ services:
     name: task-app-backend
     runtime: node
     rootDir: backend
-    buildCommand: npm install && npm run build && npm run prisma:deploy
+    buildCommand: npm install --include=dev && npm run build && npm run prisma:deploy
     startCommand: npm run start
     healthCheckPath: /api/health
     autoDeploy: true
@@ -23,7 +23,7 @@ services:
     name: task-app-frontend
     runtime: static
     rootDir: frontend
-    buildCommand: npm install && npm run build
+    buildCommand: npm install --include=dev && npm run build
     staticPublishPath: dist
     autoDeploy: true
     envVars:

@@ -31,7 +31,7 @@ Notes:
 Backend commands configured in `render.yaml`:
 
 ```bash
-npm install && npm run build && npm run prisma:deploy
+npm install --include=dev && npm run build && npm run prisma:deploy
 npm run start
 ```
 
@@ -48,7 +48,7 @@ After changing `VITE_API_BASE_URL`, redeploy the frontend because Vite bakes thi
 Frontend commands configured in `render.yaml`:
 
 ```bash
-npm install && npm run build
+npm install --include=dev && npm run build
 ```
 
 Static publish path:
@@ -62,14 +62,14 @@ dist
 Backend service:
 
 - Root Directory: `backend`
-- Build Command: `npm install && npm run build && npm run prisma:deploy`
+- Build Command: `npm install --include=dev && npm run build && npm run prisma:deploy`
 - Start Command: `npm run start`
 - Health Check Path: `/api/health`
 
 Frontend static site:
 
 - Root Directory: `frontend`
-- Build Command: `npm install && npm run build`
+- Build Command: `npm install --include=dev && npm run build`
 - Publish Directory: `dist`
 - Rewrite rule: `/*` -> `/index.html`
 
